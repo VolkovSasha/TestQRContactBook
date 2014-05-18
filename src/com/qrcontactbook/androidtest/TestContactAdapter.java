@@ -10,13 +10,13 @@ import com.qrcontactbook.db.Contact;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 
-public class TestAdapterr extends
+public class TestContactAdapter extends
 		ActivityInstrumentationTestCase2<HomeActivity> {
 	
 	private Activity activity;
 	private List<Contact> contacts;
 	
-	public TestAdapterr() {
+	public TestContactAdapter() {
 	       super("com.qrcontactbook.adapter", HomeActivity.class);
 	   }
 	
@@ -80,7 +80,13 @@ public class TestAdapterr extends
 		
 		assertEquals(0, adapter.getItem(0).getId());
 		assertEquals(0, adapter.getItem(4).getId());
+	}
+
+	public void testAdapterListView() {
+		ContactAdapter adapter = new ContactAdapter(activity);
+		adapter.setData(contacts);
 		
+		assertNotNull(adapter.getView(2, null, null));
 	}
 
 }
